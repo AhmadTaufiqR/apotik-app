@@ -20,7 +20,6 @@ class AdminSeeder extends Seeder
             'nama' => 'Admin',
             'username' => 'admin1',
             'sandi' => bcrypt('admin1'),
-            'level' => 'admin'
         ]);
     }
 }
