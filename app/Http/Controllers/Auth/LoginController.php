@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pelanggan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +21,9 @@ class LoginController extends Controller
         if (Auth::check()) {
             // Jika pengguna sudah terotentikasi, arahkan mereka ke dashboard
             if (Auth::user()->hasRole('Pelanggan')) {
-                return redirect()->route('dasboard_pelanggan');
+                return redirect()->route('ashboard-pelanggan.index');
             } elseif (Auth::user()->hasAnyRole(['Admin', 'Apoteker'])) {
-                return redirect()->route('dashboard');
+                return redirect()->route('dashboard.index');
             }
         }
 
@@ -40,28 +41,36 @@ class LoginController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        // dd($credentials);
-
+        // Coba autentikasi untuk model User
         if (Auth::attempt($credentials)) {
             $user = User::find(Auth::user()->id);
 
-            //dd($user);
-
-            // Simpan peran pengguna dalam sesi
             session(['user_role' => $user->role]);
-
-            // Redirect based on the user's role
+            // Redirect berdasarkan peran pengguna
             if ($user->hasRole('Pelanggan')) {
-                return redirect()->route('dashboard_pelanggan');
-            } elseif ($user->hasRole('Admin')) {
-                return redirect()->route('dashboard');
-            } elseif ($user->hasRole('Apotek')) {
-                return redirect()->route('dashboard');
+                return redirect()->route('ashboard-pelanggan.index');
+            } elseif ($user->hasRole('Admin') || $user->hasRole('Apoteker')) {
+                return redirect()->route('dashboard.index');
             }
         }
 
-        return redirect()->back()->withInput($request->only('Username'))->with('error', 'Username dan Password Salah !');
+        // Jika autentikasi untuk model User gagal, coba untuk model Pelanggan
+        $user = Pelanggan::where('email', $request->email)->first();
+
+        // Periksa apakah pengguna ditemukan dan password cocok
+        if ($user && Hash::check($request->password, $user->password)) {
+            // Login pengguna
+            // Auth::login($user);
+
+            // Redirect ke dashboard_pelanggan jika peran adalah "Pelanggan"
+            return redirect()->route('dashboard-pelanggan.index')->with('success', 'Login berhasil');
+        }
+
+        // Autentikasi gagal untuk kedua model, kembalikan dengan pesan error
+        return redirect()->back()->withInput($request->only('email'))->with('error', 'Email atau password salah');
     }
+
+
 
 
     /**

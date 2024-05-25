@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApotekerController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPelangganController;
 use App\Http\Controllers\DetailPembelianController;
@@ -33,15 +34,15 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/register', function () {
-    return view('register.register');
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register');
+
+Route::middleware(['role:Admin|Apoteker'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 });
 
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('/dashboard-pelanggan', [DashboardPelangganController::class, 'index'])->name('dashboard-pelanggan.index');
 Route::get('/dashboard-pelanggan/search', [DashboardPelangganController::class, 'search'])->name('dashboard-pelanggan.search');
-
 
 
 Route::middleware(['role:Admin'])->group(function () {

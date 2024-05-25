@@ -46,7 +46,7 @@ class PelangganController extends Controller
         $pelanggan = Pelanggan::create([
             'NmPelanggan' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             'Telpon' =>  $request->phone_number,
             'Alamat' => $request->address,
             'Kota' => $request->city,
