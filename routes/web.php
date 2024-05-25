@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ApotekerController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardPelangganController;
 use App\Http\Controllers\DetailPembelianController;
 use App\Http\Controllers\DetailPenjualanController;
 use App\Http\Controllers\ObatController;
@@ -34,6 +36,11 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', function () {
     return view('register.register');
 });
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/dashboard-pelanggan', [DashboardPelangganController::class, 'index'])->name('dashboard-pelanggan.index');
+Route::get('/dashboard-pelanggan/search', [DashboardPelangganController::class, 'search'])->name('dashboard-pelanggan.search');
 
 
 
