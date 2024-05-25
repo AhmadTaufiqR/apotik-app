@@ -15,14 +15,14 @@
                                 @method('PUT')
                                 <div class="row">
                                     <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="name">Nama</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Masukkan Nama" required value="{{ old('name', $apoteker->Nama) }}" disabled>
-                                        @error('name')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="email">Nama</label>
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Masukkan Nama" required value="{{ old('email', $apoteker->email) }}">
+                                            @error('email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="username">Username</label>

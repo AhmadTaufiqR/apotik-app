@@ -53,10 +53,21 @@
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf 
                                     <div class="form-group">
-                                        <input  class="form-control" id="Username" name="Username" aria-describedby="emailHelp" placeholder="Masukkan Username">
+                                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" aria-describedby="emailHelp" placeholder="Masukkan email" required autofocus>
+                                        <div class="invalid-feedback" id="email-error-message" style="display: none;">
+                                            Email harus berakhiran @gmail.com
+                                        </div>
                                     </div>
+                                    
                                     <div class="form-group">
-                                        <input  class="form-control" id="Sandi" name="Sandi" placeholder="Sandi">
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required minlength="8">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i id="togglePassword" class="fas fa-eye"></i>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                    
                                     <button class="btn btn-primary float-right m-l-xxs" type="submit">Login</button>

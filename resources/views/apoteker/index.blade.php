@@ -62,7 +62,7 @@
                                         </th>                                        
                                         <th>#</th>
                                         <th>Nama</th>
-                                        <th>Username</th>
+                                        <th>Email</th>
                                         <th>Tanggal Dibuat</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -78,7 +78,7 @@
                                         <td><input type="checkbox" name="ids[]" class="checkbox_ids" id="{{ $apoteker->id }}" value="{{ $apoteker->id }}"></td>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $apoteker->Nama }}</td>
-                                        <td>{{ $apoteker->Username }}</td>
+                                        <td>{{ $apoteker->email }}</td>
                                         <td>{{ $apoteker->created_at}}</td>
 
                                         <td>

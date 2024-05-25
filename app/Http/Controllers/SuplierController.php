@@ -108,6 +108,6 @@ class SuplierController extends Controller
         Suplier::whereIn('id', $request->ids)->delete();
 
         // Redirect ke halaman sebelumnya atau halaman lain yang sesuai
-        return redirect()->route('apoteker.index')->with('message', 'Berhasil menghapus data');
+        return redirect()->route('suplier.index')->with('message', 'Berhasil menghapus data');
     }
 }
