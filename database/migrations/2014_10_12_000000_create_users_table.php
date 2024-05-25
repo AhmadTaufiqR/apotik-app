@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('Nama');
             $table->string('Username')->unique();
             $table->string('Sandi');
-            $table->string('Level');
             $table->softDeletes();
             $table->timestamps();
         });

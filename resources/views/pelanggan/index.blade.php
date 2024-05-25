@@ -8,10 +8,10 @@
                 <div class="col-xl">
                     <div class="card">
                         <div class="card-body">
-                            <h2 class="card-title mb-4" style="font-size: 20px;">Tabel Data Apoteker</h2>
+                            <h2 class="card-title mb-4" style="font-size: 20px;">Tabel Data Pelanggan</h2>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <form action="{{ route('apoteker.search') }}" method="GET">
+                                    <form action="{{ route('pelanggan.search') }}" method="GET">
                                         <div class="input-group">
                                             <input type="text" class="form-control" name="search" id="searchInput" placeholder="Masukkan Nama" value="" size="30">
                                             <div class="input-group-append">
@@ -23,13 +23,13 @@
                                     </form>
                                 </div>
                                 <div class="d-flex">
-                                    <a href="{{ route('apoteker.index') }}" id="refreshPage" class="btn btn-outline-info mr-2" data-toggle="tooltip" data-placement="top" title="Segarkan">
+                                    <a href="{{ route('pelanggan.index') }}" id="refreshPage" class="btn btn-outline-info mr-2" data-toggle="tooltip" data-placement="top" title="Segarkan">
                                         <i class="fas fa-sync-alt mr-1"></i>
                                     </a>                                    
-                                    <a href="{{ route('apoteker.create') }}" class="btn btn-outline-success mr-2" data-toggle="tooltip" data-placement="top" title="Tambah">
+                                    <a href="{{ route('pelanggan.create') }}" class="btn btn-outline-success mr-2" data-toggle="tooltip" data-placement="top" title="Tambah">
                                         <i class="fas fa-plus"></i>
                                     </a>
-                                    <a href="#" id="deleteAllSelectedRecord" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmationModal" data-url="{{ route('apoteker.destroy.multi') }}" >
+                                    <a href="#" id="deleteAllSelectedRecord" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmationModal" data-url="{{ route('pelanggan.destroy.multi') }}" >
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </div>
@@ -63,32 +63,38 @@
                                         <th>ID</th>
                                         <th>Nama</th>
                                         <th>Username</th>
+                                        <th>Nomor Handphone</th>
+                                        <th>Alamat</th>
+                                        <th>Kota</th>
                                         <th>Tanggal Dibuat</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if ($apoteker->isEmpty())
+                                    @if ($pelanggan->isEmpty())
                                         <tr>
                                             <td colspan="9" class="text-center">Data kosong atau tidak ada data</td>
                                         </tr>
                                     @else
-                                    @foreach($apoteker as $apoteker)
-                                    <tr class="text-center" id = "upt_ids{{ $apoteker ->id }}">
-                                        <td><input type="checkbox" name="ids[]" class="checkbox_ids" id="{{ $apoteker->id }}" value="{{ $apoteker->id }}"></td>
-                                        <td>{{ $apoteker->id }}</td>
-                                        <td>{{ $apoteker->Nama }}</td>
-                                        <td>{{ $apoteker->Username }}</td>
-                                        <td>{{ $apoteker->created_at}}</td>
+                                    @foreach($pelanggan as $pelanggan)
+                                    <tr class="text-center" id = "upt_ids{{ $pelanggan ->id }}">
+                                        <td><input type="checkbox" name="ids[]" class="checkbox_ids" id="{{ $pelanggan->id }}" value="{{ $pelanggan->id }}"></td>
+                                        <td>{{ $pelanggan->id }}</td>
+                                        <td>{{ $pelanggan->NmPelanggan }}</td>
+                                        <td>{{ $pelanggan->Username}}</td>
+                                        <td>{{ $pelanggan->Telpon }}</td>
+                                        <td>{{ $pelanggan->Alamat }}</td>
+                                        <td>{{ $pelanggan->Kota }}</td>
+                                        <td>{{ $pelanggan->created_at}}</td>
 
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="{{ route('apoteker.detail', $apoteker->id) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Detail">
+                                                <a href="{{ route('pelanggan.detail', $pelanggan->id) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Detail">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </div>
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="{{ route('apoteker.edit', $apoteker->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Ubah">
+                                                <a href="{{ route('pelanggan.edit', $pelanggan->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Ubah">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                             </div>
@@ -99,8 +105,6 @@
                                 </tbody>
                             </table>
                         </div>
-
-                        
                     </div>
                 </div>
             </div>

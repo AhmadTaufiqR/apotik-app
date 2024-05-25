@@ -45,7 +45,7 @@
                         <span class="material-design-hamburger__layer"></span>
                     </a>
                 </section>
-                <a class="navbar-brand" href="{{ Auth::user()->hasRole('Root') ? route('upts.index') : route('dashboard') }}">Transgo</a>
+                <a class="navbar-brand" href="">Transgo</a>
         
 
 
@@ -56,27 +56,22 @@
         
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        @if (!Auth::user()->hasRole('Root'))
-                            <li class="nav-item">
-                                <div class="navbar-text ml-auto d-flex align-items-center">
-                                    <img src="{{ asset('storage/' . Auth::user()->images) }}" alt="Avatar" class="avatar mr-2">
-                                    {{ str_word_count(Auth::user()->name) > 1 ? explode(" ", Auth::user()->name)[0] : Auth::user()->name }}
-                                </div>
-                            </li>
-                        @endif
+                       
+                           
+                   
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                @if (!Auth::user()->hasRole('Root'))
-                                    <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+                                
+                                    <a class="dropdown-item" href="">Profile</a>
                                     <div class="dropdown-divider"></div>
-                                @endif
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                              
+                                <a class="dropdown-item" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Keluar
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -101,5 +96,9 @@
         <script src="../../assets/js/pages/toastr.js"></script>
         <script src="../../assets/js/lime.min.js"></script>
         <script src="../../assets/js/pages/select2.js"></script>
+        <script src="../../assets/js/custom.js"></script>
+        <script src="../../assets/js/search.js"></script>
+        <script src="../../assets/js/multi_del.js"></script>
+        
     </body>
     </html>

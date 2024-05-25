@@ -1,1 +1,7 @@
-/* Write your custom CSS here */
+.match {
+    background-color: #c8e6c9; /* Warna hijau untuk cocok */
+}
+
+.mismatch {
+    background-color: #ffcdd2; /* Warna merah untuk tidak cocok */
+}

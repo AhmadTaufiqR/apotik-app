@@ -23,7 +23,6 @@ class User extends Authenticatable
         'Nama',
         'Username',
         'Sandi',
-        'Level'
     ];
 
     /**
