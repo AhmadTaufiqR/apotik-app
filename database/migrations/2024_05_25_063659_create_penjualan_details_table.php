@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('Penjualan_id')->constrained('Penjualan');
             $table->foreignId('Obat_id')->constrained('Obat');
             $table->integer('Jumlah');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

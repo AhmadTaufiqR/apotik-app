@@ -1,4 +1,4 @@
-@extends('layouts/main')
+@extends('layouts.main')
 
 @section('container')
 <div class="lime-container">
@@ -8,25 +8,16 @@
                 <div class="col-xl">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Tambah Apoteker</h5>
+                            <h5 class="card-title">Tambah Detail Penjualan</h5>
                             <p>Isi data dengan lengkap dan tepat</p>
-                            <form method="POST" action="{{ route('apoteker.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('detail-penjualan.store') }}" enctype="multipart/form-data">
                                 @csrf  
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="name">Nama</label>
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Masukkan Nama" required value="{{ old('name') }}">
-                                            @error('name')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Masukkan Username" required value="{{ old('username') }}">
-                                            @error('username')
+                                            {{-- <label for="notaId">Nota</label> --}}
+                                            <input type="text" class="form-control @error('notaId') is-invalid @enderror" name="notaId" id="notaId" value="{{ $id }}" hidden>
+                                            @error('notaId')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -35,34 +26,25 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <div class="input-group">
-                                                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan Password" required minlength="8">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">
-                                                        <i id="togglePassword" class="fas fa-eye"></i>
-                                                    </span>
-                                                </div>
-                                                @error('password')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                            </div>
+                                            <label for="obat_id">Obat</label>
+                                            <select class="js-states form-control" name="obat_id" id="obat_id" style="width: 100%"  title="Pilih satu" required>
+                                                <option value="">Pilih Obat</option>
+                                                @foreach($obat as $obat)
+                                                    <option value="{{ $obat->id }}">{{ $obat->NmObat }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('obat_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="confirm_password">Konfirmasi Password</label>
-                                            <div class="input-group">
-                                                <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Konfirmasi Password" required minlength="8">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">
-                                                        <i id="toggleConfirmPassword" class="fas fa-eye"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="invalid-feedback" id="password-feedback" style="display: none;">
-                                                Password tidak cocok
-                                            </div>
+                                            <label for="nota">Jumlah</label>
+                                            <input type="number" class="form-control @error('nota') is-invalid @enderror" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah" required>
+                                            @error('jumlah')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +86,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                <a href="{{ route('apoteker.index') }}" class="btn btn-primary">Ya, Kembali</a>
+                                                <a href="{{ route('penjualan.index') }}" class="btn btn-primary">Ya, Kembali</a>
                                             </div>
                                         </div>
                                     </div>
@@ -117,5 +99,4 @@
         </div>
     </div>
 </div>
-
 @endsection

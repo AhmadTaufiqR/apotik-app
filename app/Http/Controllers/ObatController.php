@@ -124,7 +124,7 @@ class ObatController extends Controller
         ]);
 
         // Lakukan penghapusan data berdasarkan ID yang diterima
-        Suplier::whereIn('id', $request->ids)->delete();
+        Obat::whereIn('id', $request->ids)->delete();
 
         // Redirect ke halaman sebelumnya atau halaman lain yang sesuai
         return redirect()->route('apoteker.index')->with('message', 'Berhasil menghapus data');

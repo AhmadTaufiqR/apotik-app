@@ -60,7 +60,7 @@
                                         <th>
                                             <input type="checkbox" name = "" id="select_all_ids">
                                         </th>                                        
-                                        <th>ID</th>
+                                        <th>#</th>
                                         <th>Nama</th>
                                         <th>Nomor Handphone</th>
                                         <th>Alamat</th>
@@ -78,10 +78,10 @@
                                     @foreach($suplier as $suplier)
                                     <tr class="text-center" id = "upt_ids{{ $suplier ->id }}">
                                         <td><input type="checkbox" name="ids[]" class="checkbox_ids" id="{{ $suplier->id }}" value="{{ $suplier->id }}"></td>
-                                        <td>{{ $suplier->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $suplier->NmSuplier }}</td>
                                         <td>{{ $suplier->Telpon }}</td>
-                                        <td>{{ $suplier->Alamat }}</td>obat
+                                        <td>{{ $suplier->Alamat }}</td>
                                         <td>{{ $suplier->Kota }}</td>
                                         <td>{{ $suplier->created_at}}</td>
 

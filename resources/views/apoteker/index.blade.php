@@ -60,7 +60,7 @@
                                         <th>
                                             <input type="checkbox" name = "" id="select_all_ids">
                                         </th>                                        
-                                        <th>ID</th>
+                                        <th>#</th>
                                         <th>Nama</th>
                                         <th>Username</th>
                                         <th>Tanggal Dibuat</th>
@@ -76,7 +76,7 @@
                                     @foreach($apoteker as $apoteker)
                                     <tr class="text-center" id = "upt_ids{{ $apoteker ->id }}">
                                         <td><input type="checkbox" name="ids[]" class="checkbox_ids" id="{{ $apoteker->id }}" value="{{ $apoteker->id }}"></td>
-                                        <td>{{ $apoteker->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $apoteker->Nama }}</td>
                                         <td>{{ $apoteker->Username }}</td>
                                         <td>{{ $apoteker->created_at}}</td>
