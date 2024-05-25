@@ -41,20 +41,25 @@
                     <div class="col-lg-4 col-md-5 col-sm-9 lfh">
                         <div class="card login-box">
                             <div class="card-body">
-                                <h5 class="card-title">Sign In</h5>
-                                <form>
+                                <h5 class="card-title">Login</h5>
+                                @if (session('error'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ session('error') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf 
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <input  class="form-control" id="Username" name="Username" aria-describedby="emailHelp" placeholder="Masukkan Username">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        <input  class="form-control" id="Sandi" name="Sandi" placeholder="Sandi">
                                     </div>
-                                    <div class="custom-control custom-checkbox form-group">
-                                        <input type="checkbox" class="custom-control-input" id="exampleCheck1">
-                                        <label class="custom-control-label" for="exampleCheck1">Remember</label>
-                                    </div>
-                                    <a href="#" class="float-left forgot-link">Forgot password?</a>
-                                    <a href="index.html" class="btn btn-primary float-right m-l-xxs">Sign In</a>
+                                   
+                                    <button class="btn btn-primary float-right m-l-xxs" type="submit">Login</button>
                                     <a href="sign-up.html" class="btn btn-secondary float-right">Sign Up</a>
                                 </form>
                             </div>
