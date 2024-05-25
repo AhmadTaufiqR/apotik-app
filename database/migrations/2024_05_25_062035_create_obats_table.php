@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('Obat', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->string('level');
+            $table->string('NmObat');
+            $table->string('Jenis');
+            $table->string('Satuan');
+            $table->double('HargaBeli');
+            $table->double('HargaJual');
+            $table->integer('Stok');
+            $table->date('kadaluarsa');
+            $table->foreignId('Suplier_id')->constrained('Suplier');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('obats');
     }
 };
