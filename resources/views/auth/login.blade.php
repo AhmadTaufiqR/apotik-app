@@ -71,7 +71,7 @@
                                     </div>
                                    
                                     <button class="btn btn-primary float-right m-l-xxs" type="submit">Login</button>
-                                    <a href="sign-up.html" class="btn btn-secondary float-right">Sign Up</a>
+                                    <a href="{{ route('register') }}" class="btn btn-secondary float-right">Sign Up</a>
                                 </form>
                             </div>
                         </div>

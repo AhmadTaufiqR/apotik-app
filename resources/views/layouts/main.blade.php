@@ -45,7 +45,7 @@
                         <span class="material-design-hamburger__layer"></span>
                     </a>
                 </section>
-                <a class="navbar-brand" href="">Transgo</a>
+                <a class="navbar-brand" href="">Apotek-App</a>
         
 
 
@@ -64,9 +64,7 @@
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                
-                                    <a class="dropdown-item" href="">Profile</a>
-                                    <div class="dropdown-divider"></div>
+                                  
                               
                                 <a class="dropdown-item" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Keluar
