@@ -35,7 +35,7 @@ class PelangganController extends Controller
         // Validasi data yang diterima dari form
         $request->validate([
             'name' => 'required',
-            'username' => 'required',
+            'email' => 'required',
             'phone_number' => 'required',
             'password' => 'required',
             'address' => 'required',
@@ -45,8 +45,8 @@ class PelangganController extends Controller
         // Membuat pengguna baru dengan memetakan atribut form ke kolom database
         $pelanggan = Pelanggan::create([
             'NmPelanggan' => $request->name,
-            'Username' => $request->username,
-            'Sandi' => $request->password,
+            'email' => $request->email,
+            'password' => $request->password,
             'Telpon' =>  $request->phone_number,
             'Alamat' => $request->address,
             'Kota' => $request->city,
@@ -74,7 +74,7 @@ class PelangganController extends Controller
         // Validasi data yang diterima dari form
         $request->validate([
             'name' => 'required',
-            'username' => 'required',
+            'email' => 'required',
             'phone_number' => 'required',
             'password' => 'nullable|min:8',
             'address' => 'required',
@@ -86,11 +86,11 @@ class PelangganController extends Controller
 
         // Perbarui data pengguna
         $pelanggan->NmPelanggan = $request->name;
-        $pelanggan->Username = $request->username;
+        $pelanggan->email = $request->email;
         $pelanggan->Telpon = $request->phone_number;
         // Jika password diisi, perbarui password
         if ($request->filled('password')) {
-            $pelanggan->Sandi = Hash::make($request->password);
+            $pelanggan->password = Hash::make($request->password);
         }
         $pelanggan->Alamat = $request->address;
         $pelanggan->Kota = $request->city;

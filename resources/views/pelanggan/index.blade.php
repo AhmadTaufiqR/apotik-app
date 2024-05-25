@@ -62,7 +62,7 @@
                                         </th>                                        
                                         <th>#</th>
                                         <th>Nama</th>
-                                        <th>Username</th>
+                                        <th>Email</th>
                                         <th>Nomor Handphone</th>
                                         <th>Alamat</th>
                                         <th>Kota</th>
@@ -81,7 +81,7 @@
                                         <td><input type="checkbox" name="ids[]" class="checkbox_ids" id="{{ $pelanggan->id }}" value="{{ $pelanggan->id }}"></td>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $pelanggan->NmPelanggan }}</td>
-                                        <td>{{ $pelanggan->Username}}</td>
+                                        <td>{{ $pelanggan->email}}</td>
                                         <td>{{ $pelanggan->Telpon }}</td>
                                         <td>{{ $pelanggan->Alamat }}</td>
                                         <td>{{ $pelanggan->Kota }}</td>

@@ -40,15 +40,15 @@ class ApotekerController extends Controller
         // Validasi data yang diterima dari form
         $request->validate([
             'name' => 'required',
-            'username' => 'required|unique:users',
+            'email' => 'required',
             'password' => 'required|min:8',
         ]);
 
         // Membuat pengguna baru dengan memetakan atribut form ke kolom database
         $apoteker = User::create([
             'Nama' => $request->name,
-            'Username' => $request->username,
-            'Sandi' => Hash::make($request->password),
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
 
 
@@ -73,7 +73,7 @@ class ApotekerController extends Controller
         // Validasi data yang diterima dari form
         $request->validate([
             'name' => 'required',
-            'username' => 'required|unique:users,username,' . $id,
+            'email' => 'required',
             'password' => 'nullable|min:8',
         ]);
 
@@ -82,11 +82,11 @@ class ApotekerController extends Controller
 
         // Perbarui data pengguna
         $apoteker->Nama = $request->name;
-        $apoteker->Username = $request->username;
+        $apoteker->email = $request->email;
 
         // Jika password diisi, perbarui password
         if ($request->filled('password')) {
-            $apoteker->Sandi = Hash::make($request->password);
+            $apoteker->password = Hash::make($request->password);
         }
 
         // Simpan perubahan

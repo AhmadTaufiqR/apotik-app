@@ -17,9 +17,9 @@ class PelangganSeeder extends Seeder
     {
         Pelanggan::create([
             'NmPelanggan' => 'Adi Wijaya',
-            'Username' => 'Adi',
+            'email' => 'Adi@gmail.com',
             'Telpon' => '08980512312',
-            'Sandi' => 'jayawijaya',
+            'password' => bcrypt('jayawijaya'),
             'Alamat' => 'Jl Mastrip No 18',
             'Kota' => 'Jember'
         ]);

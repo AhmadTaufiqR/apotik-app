@@ -20,7 +20,7 @@ class LoginController extends Controller
         if (Auth::check()) {
             // Jika pengguna sudah terotentikasi, arahkan mereka ke dashboard
             if (Auth::user()->hasRole('Pelanggan')) {
-                return redirect()->route('obat_pelanggan.index');
+                return redirect()->route('dasboard_pelanggan');
             } elseif (Auth::user()->hasAnyRole(['Admin', 'Apoteker'])) {
                 return redirect()->route('dashboard');
             }
@@ -38,32 +38,21 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        // // Get the credentials from the request
-        // $credentials = $request->only('Username', 'Sandi');
+        $credentials = $request->only('email', 'password');
 
-        // // Map credentials to the fields used in the User model for authentication
-        // $authCredentials = ['Username' => $credentials['Username'], 'Sandi' => $credentials['Sandi']];
+        // dd($credentials);
 
-        $credentials = [
-            'Username' => session('Username'),
-            'Sandi' => session('Sandi'),
-        ];
-
-        dd($credentials);
-
-        // Attempt to authenticate the user
         if (Auth::attempt($credentials)) {
             $user = User::find(Auth::user()->id);
 
-            // Debugging output
-            // dd($user);
+            //dd($user);
 
-            // Save the user's role in the session
+            // Simpan peran pengguna dalam sesi
             session(['user_role' => $user->role]);
 
             // Redirect based on the user's role
             if ($user->hasRole('Pelanggan')) {
-                return redirect()->route('upts.index');
+                return redirect()->route('dashboard_pelanggan');
             } elseif ($user->hasRole('Admin')) {
                 return redirect()->route('dashboard');
             } elseif ($user->hasRole('Apotek')) {

@@ -106,6 +106,6 @@ class PenjualanController extends Controller
         penjualan::whereIn('id', $request->ids)->delete();
 
         // Redirect ke halaman sebelumnya atau halaman lain yang sesuai
-        return redirect()->route('apoteker.index')->with('message', 'Berhasil menghapus data');
+        return redirect()->route('penjualan.index')->with('message', 'Berhasil menghapus data');
     }
 }
